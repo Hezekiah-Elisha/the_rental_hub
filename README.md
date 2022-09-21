@@ -2,3 +2,16 @@
 Group Members
 VANESSA OKUMU
 HEZEKIAH ELISHA
+
+## Pre-requisites
+
+Bootstrap 5.2.1
+
+
+## Installation
+getbootsrap.com - download bootstrap 5.2.1
+
+## file arrangements
+index.html
+css
+js
