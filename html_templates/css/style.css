@@ -1,3 +1,9 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 :root{
     --space-cadet: #141b41ff;
     --green-blue: #306bacff;
@@ -10,11 +16,15 @@ html {
 }
 
 body {
-    background-color: #333;
+    background-color: var(--baby-blue-eyes);
     color: aliceblue;
 }
 
 nav{
     background-color: var(--space-cadet) !important;
     /* color: azure !important; */
+}
+
+.navbar-brand{
+    font-family: 'Mukta', sans-serif;
 }
