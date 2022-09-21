@@ -1,7 +1,7 @@
 # the_rental_hub
 Group Members
-VANESSA OKUMU
-HEZEKIAH ELISHA
++ VANESSA OKUMU
++ HEZEKIAH ELISHA
 
 ## Pre-requisites
 
@@ -15,3 +15,8 @@ getbootsrap.com - download bootstrap 5.2.1
 index.html
 css
 js
+
+
+
+## link
+link: https://hezekiah-elisha.github.io/the_rental_hub/
