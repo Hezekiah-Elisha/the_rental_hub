@@ -12,9 +12,9 @@ Bootstrap 5.2.1
 getbootsrap.com - download bootstrap 5.2.1
 
 ## file arrangements
-index.html
-css
-js
++ index.html
++ css
++ js
 
 
 
