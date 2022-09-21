@@ -1,4 +1,4 @@
-# the_rental_hub
+# The Rental Hub
 Group Members
 + VANESSA OKUMU
 + HEZEKIAH ELISHA
