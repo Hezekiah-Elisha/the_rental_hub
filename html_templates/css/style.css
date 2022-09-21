@@ -1,8 +1,20 @@
+:root{
+    --space-cadet: #141b41ff;
+    --green-blue: #306bacff;
+    --cornflower-blue: #6f9cebff;
+    --baby-blue-eyes: #98b9f2ff;
+    --medium-purple: #918ef4ff;
+}
 html {
-    font-size: 22px;
+    /* font-size: 22px; */
 }
 
 body {
     background-color: #333;
     color: aliceblue;
+}
+
+nav{
+    background-color: var(--space-cadet) !important;
+    /* color: azure !important; */
 }
