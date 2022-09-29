@@ -25,7 +25,7 @@ class Contact(Base):
     contact_id = Column(Integer, nullable=False, primary_key=True)
     title = Column(String(100), unique=True, nullable=False)
     email = Column(String(100), unique=True, nullable=False)
-    feedback = Column(LONGTEXT, nullable=True)
+    feedback = Column(LONGTEXT, nullable=False)
     feedback_time = Column(DateTime, default=datetime.now, nullable=False)
 
 
