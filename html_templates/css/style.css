@@ -4,6 +4,7 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+
 :root{
     --space-cadet: #141b41ff;
     --green-blue: #306bacff;
@@ -13,11 +14,14 @@
 }
 html {
     /* font-size: 22px; */
+    padding: 0;
+    margin: 0;
 }
 
 body {
-    background-color: var(--baby-blue-eyes);
-    color: aliceblue;
+    /* background-color: var(--baby-blue-eyes); */
+    /* color: aliceblue; */
+    color: var(--space-cadet);
 }
 
 nav{
@@ -28,4 +32,50 @@ nav{
 
 .navbar-brand{
     font-family: 'Mukta', sans-serif;
+    font-size: 2rem;
+}
+
+
+
+header{
+    background-image: url("../images/image1.jpg");
+    height: 100vh;
+    background-size: cover;
+}
+
+main article div{
+    padding: 20px;
+    margin: 40px;
+}
+
+.login{
+    background-color: var(--baby-blue-eyes);
+    height: 100vh;
+}
+
+.login article form input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+footer{
+    background-color: grey;
+    margin: 0;
+    padding: 0;
+    bottom: 0;
+}
+
+.card{
+    /* background-color: var(--space-cadet);     */
+}
+
+.item{
+    /* display: flex;
+    flex-direction: row; */
+
+    border: #141b41ff 1px solid;
+}
+.item img{
+    width: 300px;
+    height: 300px;
 }

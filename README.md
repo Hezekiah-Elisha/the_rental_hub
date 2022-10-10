@@ -6,7 +6,7 @@ Group Members
 ## Pre-requisites
 
 Bootstrap 5.2.1
-
+Flask latest version
 
 ## Installation
 getbootstrap.com - download bootstrap 5.2.1
