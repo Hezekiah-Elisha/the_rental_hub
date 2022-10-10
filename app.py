@@ -27,7 +27,16 @@ def login():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    return render_template('register.html')
+
+    form = RegisterForm()
+
+    if form.validate_on_submit():
+        username = form.username.data
+        firstName = form.fistName.data
+        lastName = form.lastName.data
+        email = form.email.data
+        password = form.password.data
+    return render_template('register.html', form=form)
 
 
 if __name__ == '__main__':

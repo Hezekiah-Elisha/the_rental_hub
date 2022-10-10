@@ -42,12 +42,11 @@
     <h2 class="text-center">Please Login</h2>
 
     <article class="d-flex justify-content-center">
-        <form action="" action="/create_post" method="POST" enctype="multipart/form-data">
+        <form action="" action="/login" method="POST" enctype="multipart/form-data">
             {{ form.csrf_token }}
             {{ form.username(placeholder='Username', class='form-control') }}
             {{ form.password(placeholder='Enter Your Password', class='form-control') }}
-            <input type="password" placeholder="Enter Your password" class="form-control">
-            <button class="btn btn-success w-100" >Login</button>
+            {{ form.submit(class='btn btn-success w-100') }}
             <p>No account? Kindly <a href="/register">Register</a></p>
         </form>
 

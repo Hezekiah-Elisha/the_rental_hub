@@ -42,14 +42,16 @@
 <main class="login">
     <h2 class="text-center">Please Login</h2>
 
-    <article class="d-flex justify-content-center">
+    <article class="d-flex justify-content-center" action="/login" method="POST" enctype="multipart/form-data">
         <form action="" class="">
-            <input type="text" placeholder="Username" class="form-control" required>
-            <input type="text" placeholder="First Name" class="form-control" required>
-            <input type="text" placeholder="last Name" class="form-control" required>
-            <input type="email" placeholder="Email" class="form-control" required>
-            <input type="password" placeholder="Enter Your password" class="form-control" required>
-            <button class="btn btn-success w-100" >Login</button>
+            {{ form.csrf_token }}
+            {{ form.username(placeholder='Username', class='form-control') }}
+            {{ form.firstName(placeholder='First Name', class='form-control') }}
+            {{ form.lastName(placeholder='Last Name', class='form-control') }}
+            {{ form.email(placeholder='Email', class='form-control') }}
+            {{ form.password(placeholder='Password', class='form-control') }}
+            {# form.confirmPassword(placeholder='Confirm Password', class='form-control') #}
+            {{ form.submit(class='btn btn-success w-100') }}
         </form>
     </article>
   </main>
