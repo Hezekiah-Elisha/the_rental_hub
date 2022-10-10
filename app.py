@@ -36,7 +36,20 @@ def register():
         lastName = form.lastName.data
         email = form.email.data
         password = form.password.data
+
+
     return render_template('register.html', form=form)
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    form = ContactForm()
+
+    if form.validate_on_submit():
+        name = form.name.data
+        email = form.email.data
+        feedback = form.feedback.data
+
+    return render_template('contact.html', form=form)
 
 
 if __name__ == '__main__':
