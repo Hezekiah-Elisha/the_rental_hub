@@ -11,6 +11,8 @@
     --cornflower-blue: #6f9cebff;
     --baby-blue-eyes: #98b9f2ff;
     --medium-purple: #918ef4ff;
+    --v-color: #990000;
+    --v-other: #ffb3b3;
 }
 html {
     /* font-size: 22px; */
@@ -25,7 +27,7 @@ body {
 }
 
 nav{
-    /* background-color: var(--space-cadet) !important; */
+    /* background-color: var(--space-cade) !important; */
     /* color: azure !important; */
     /* position: fixed; */
 }

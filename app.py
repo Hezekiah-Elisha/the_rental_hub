@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from datetime import datetime
-from flask import Flask, g, render_template, request, abort, session, url_for, redirect
+from flask import Flask, flash, Blueprint, g, render_template, request, abort, session, url_for, redirect
 from jinja2 import TemplateNotFound
 from models.BuildingForm import LoginForm, RegisterForm, ContactForm
 
@@ -8,6 +8,12 @@ app = Flask(__name__)
 app.secret_key = '26682bea5f914ef84a779f0a7a678432'
 
 now = datetime.now()
+
+
+@app.errorhandler(404)
+def error(error):
+    name = "page"
+    return render_template('404.html', name=name)
 
 
 @app.route('/')
@@ -50,6 +56,20 @@ def contact():
         feedback = form.feedback.data
 
     return render_template('contact.html', form=form)
+
+@app.route('/add_house', methods=['GET', 'POST'])
+def add_house():
+    return render_template('add_house.html')
+
+
+@app.route('/get_session', methods=['GET', 'POST'])
+def get_session():
+    return "some session"
+
+
+@app.route('/dashboard', methods=['GET', 'POST'])
+def dashboard():
+    return render_template('admin/dashboard.html')
 
 
 if __name__ == '__main__':
