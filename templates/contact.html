@@ -45,10 +45,11 @@
     <article class="d-flex justify-content-center">
         <form action="" action="/login" method="POST" enctype="multipart/form-data">
             {{ form.csrf_token }}
-            {{ form.name(placeholder='Username', class='form-control') }}
-            {{ form.email(placeholder='Enter Your Password', class='form-control') }}
+            {{ form.title(placeholder='Title', class='form-control') }}
+            {{ form.email(placeholder='Enter Your email', class='form-control') }}
             {{ form.feedback(placeholder='Feedback', class='form-control') }}
             {{ form.submit(class='btn btn-success w-100') }}
+            {{ contact }}
         </form>
     </article>
   </main>

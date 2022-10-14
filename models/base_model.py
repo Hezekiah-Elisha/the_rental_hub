@@ -75,9 +75,10 @@ class Building(Base):
     Table Building: Instance of Base for table building
     '''
     __tablename__ = "buildings"
-    building_id = Column(Integer, nullable=False)
+    building_id = Column(Integer, nullable=False, primary_key=True)
     name = Column(String(200), nullable=False)
     rooms = Column(Integer, nullable=False)
     price = Column(Integer, nullable=False)
     expiry_time = Column(DateTime, default=datetime.now, nullable=True)
     reg_time = Column(DateTime, default=datetime.now, nullable=False)
+

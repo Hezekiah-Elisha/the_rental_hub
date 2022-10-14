@@ -22,7 +22,7 @@ class RegisterForm(FlaskForm):
 
 
 class ContactForm(FlaskForm):
-    name = StringField('name', validators=[DataRequired()])
+    title = StringField('title', validators=[DataRequired()])
     email = StringField('email', validators=[DataRequired(), Email()])
     feedback = TextAreaField('feedback', validators=[DataRequired()])
     submit = SubmitField('submit')

@@ -3,6 +3,8 @@ from datetime import datetime
 from flask import Flask, flash, Blueprint, g, render_template, request, abort, session, url_for, redirect
 from jinja2 import TemplateNotFound
 from models.BuildingForm import LoginForm, RegisterForm, ContactForm
+from models.base_model import Base, engine
+from models.model_function import contact_submission
 
 app = Flask(__name__)
 app.secret_key = '26682bea5f914ef84a779f0a7a678432'
@@ -13,7 +15,12 @@ now = datetime.now()
 @app.errorhandler(404)
 def error(error):
     name = "page"
-    return render_template('404.html', name=name)
+    return render_template('404.html', name=name), 404
+
+
+@app.before_first_request
+def create_db():
+    Base.metadata.create_all(bind=engine)
 
 
 @app.route('/')
@@ -51,9 +58,13 @@ def contact():
     form = ContactForm()
 
     if form.validate_on_submit():
-        name = form.name.data
+        title = form.title.data
         email = form.email.data
         feedback = form.feedback.data
+
+        contact = contact_submission(title, email, feedback)
+
+        return render_template('contact.html', contact=contact, form=form)
 
     return render_template('contact.html', form=form)
 
