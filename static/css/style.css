@@ -3,13 +3,13 @@
 @font-face {
     font-family: ramus;
     /* src: url(../ramus-font/RamusRegular-VGw8w.ttf); */
-    src: url(../static/ramus-font/RamusRegular-VGw8w.ttf);
+    src: url(../ramus-font/RamusRegular-VGw8w.ttf);
 }
 
 @font-face {
     font-family: amsterdam_four;
     /* src: url(../fonts/fonts/Amsterdam\ 400.ttf); */
-    src: url(../static/css/fonts/Amsterdam\ 400.ttf);
+    src: url(./fonts/fonts/Amsterdam400.ttf);
 }
 
 *{
