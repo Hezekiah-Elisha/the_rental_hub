@@ -1,3 +1,15 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css");
+
+@font-face {
+    font-family: ramus;
+    src: url(../ramus-font/RamusRegular-VGw8w.ttf);
+}
+
+@font-face {
+    font-family: amsterdam_four;
+    src: url(./fonts/fonts/Amsterdam\ 400.ttf);
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -6,76 +18,289 @@
 }
 
 :root{
-    --space-cadet: #141b41ff;
-    --green-blue: #306bacff;
-    --cornflower-blue: #6f9cebff;
-    --baby-blue-eyes: #98b9f2ff;
-    --medium-purple: #918ef4ff;
+    --primary: rgb(6, 17, 42);
+    --primary-light: rgba(6, 17, 42, 0.2);
+    --secondary: #5EA51D;
+    --accent: rgb(100, 149, 237);
 }
-html {
-    /* font-size: 22px; */
-    padding: 0;
-    margin: 0;
+body{
+    background-color: azure;
 }
 
-body {
-    /* background-color: var(--baby-blue-eyes); */
-    /* color: aliceblue; */
-    color: var(--space-cadet);
+.top-home{
+    background-color: var(--primary);
+    height: 100%;
+    width: 100%;
+
 }
 
 nav{
-    /* background-color: var(--space-cadet) !important; */
-    /* color: azure !important; */
-    /* position: fixed; */
+    background-color: var(--primary-light) !important;
+    /* background-color: red; */
+    color: white !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
 .navbar-brand{
-    font-family: 'Mukta', sans-serif;
-    font-size: 2rem;
+    font-family: amsterdam_four;
+    font-size: 30px;
+    letter-spacing: 2px;
+    color: white !important;
 }
 
-
-
-header{
-    background-image: url("../images/image1.jpg");
-    height: 100vh;
-    background-size: cover;
+.mybtns{
+    background-color: var(--secondary) !important;
 }
 
-main article div{
-    padding: 20px;
-    margin: 40px;
+.mybtns:hover{
+    background-color: var(--accent) !important;
+    color: white !important;
 }
 
-.login{
-    background-color: var(--baby-blue-eyes);
-    height: 100vh;
+h2, h3{
+    font-family: ramus;
+    /* font-weight: 900; */
+    /* font-size: 50px; */
+    color: var(--secondary);
+}
+.bi{
+    font-size: 2rem; 
+    color: var(--accent);
 }
 
-.login article form input{
-    margin-top: 5px;
-    margin-bottom: 5px;
+.cont{
+    background-color: var(--primary);
+    color: white;
+}
+.cont p{
+    color: grey;
 }
 
-footer{
-    background-color: grey;
-    margin: 0;
+.cat{
+    padding: 50px;
+}
+
+.cat:hover{
+    background-color: var(--secondary);
+    transition: 0.3s;
+}
+
+.places{
+    padding: 50px;
+}
+.places p{
+    color: var(--secondary);
+}
+.places p:hover{
+    background-color: var(--secondary);
+    color: white;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.featured{
+    background-color: rgb(230, 255, 255);
+}
+
+.mycards{
+    background-color: white;
     padding: 0;
-    bottom: 0;
+    margin: 0;
+}
+.mycards:hover{
+    /* box-shadow: #5EA51D; */
+    transition: 0.3s;
+    box-shadow: 1px 1px 50px 15px grey;
+}
+.mycards a{
+    text-decoration: none;
+    color: black;
 }
 
-.card{
-    /* background-color: var(--space-cadet);     */
+.content-card{
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
 }
 
-.item{
-    /* display: flex;
-    flex-direction: row; */
-
-    border: #141b41ff 1px solid;
+.round-image{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
 }
-.item img{
-    width: 300px;
-    height: 300px;
+
+.property-name{
+    font-family: ramus;
+    font-size: 30px;
+    letter-spacing: 2px;
+    color: var(--secondary);
+}
+
+.tag{
+    background-color: var(--secondary);
+    color: white;
+}
+
+.overlay-tag{
+    position: absolute;
+    transform: translate(10%, -120%);
+    /* -ms-transform: translate(-50%, -50%); */
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.card-mg{
+    position: relative;
+}
+
+
+/* test */
+.the-card {
+    display: block;
+    position: relative;
+    margin: 50px auto 0;
+    padding: 10px 0;
+    width: 110px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #0099cc;
+    border: none;
+  }
+.myicons{
+    /* font-size: 2rem; */
+    color: var(--accent);
+    width: 24px;
+}
+
+
+.card-mg{
+    object-fit: cover;
+    opacity: 0.6;
+}
+
+.card-overlay{
+    background-color: rgba(0,0,0,1);
+}
+
+.card-mg:hover{
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.self-ad{
+    background-color: var(--secondary);
+    color: white;
+    padding: 50px;
+}
+
+.ad-btn{
+    padding: 10px 5px;
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+.footer{
+    background-color: var(--primary);
+    color: white;
+    padding: 50px;
+}
+
+.bi-f{
+    color: var(--secondary);
+}
+.bi:hover{
+    color: var(--accent);
+    transition: 0.3s;
+}
+.social a:hover{
+    color: var(--secondary);
+    transition: 0.3s;
+}
+
+
+.carousel-inner{
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+}
+
+.home-form{
+    background-color: white;
+}
+
+.home-form i{
+    position: absolute;
+    font-size: 25px;
+    /* margin: 5px; */
+}
+.home-form input, .home-form select{
+    padding: 10px 10px 10px 40px;
+    border: none;
+    border-bottom: 1px solid grey;
+    width: 100%;
+    outline: none;
+}
+
+label{
+    color: var(--secondary);
+}
+
+.home-search{
+    background-color: var(--secondary);
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+}
+
+a:not(.thisnot){
+    text-decoration: none;
+    color: var(--secondary);
+}
+a:not(.thisnot):hover{
+    color: var(--accent);
+    transition: 0.3s;
+    text-decoration: underline;
+}
+
+.mycards{
+    margin: 5px;
+}
+
+.aboutus{
+    background-image: url(../images/image2.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.aboutus-side{
+    background-color: azure;
+    color: white;
+    padding: 50px;
+}
+
+.auth{
+    margin: 30px;
+    /* background-color: var(--primary); */
+    margin: 50px;
+}
+.side-auth{
+    /* background-color: azure; */
+    color: white;
+    padding: 50px;
+}
+
+@media (min-width: 768px) {
+    .navbar-brand.abs{
+        position: absolute;
+        width: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+    }
 }

@@ -1,0 +1,145 @@
+:root{
+    --primary: rgb(0, 0, 102);
+}
+@font-face {
+    font-family: ramus;
+    src: url(../ramus-font/RamusRegular-VGw8w.ttf);
+}
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css");
+
+.navbar-brand{
+    font-family: ramus;
+    font-size: 30px;
+    letter-spacing: 2px;
+}
+
+h2, h3{
+    font-family: ramus;
+    font-weight: 900;
+    font-size: 50px;
+}
+.bi{
+    font-size: 2rem; 
+    color: cornflowerblue;
+}
+
+.cont{
+    background-color: var(--primary);
+    color: white;
+}
+.cont p{
+    color: grey;
+}
+
+.top{
+    background-image: url(../images/image1.jpg);
+    min-height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    /* background-attachment: scroll; */
+}
+.top-sign{
+    background-image: url(../images/image2.jpg);
+    min-height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    /* background-attachment: scroll; */
+}
+
+/* Path: css/style.css */
+
+nav{
+    background-color: rgba(158, 73, 73, 0.3) !important;
+    /* height: 100%; */
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.search-div{
+    /* background-color: rgba(158, 73, 73, 0.3) !important; */
+    /* height: 100%; */
+    /* width: 80%; */
+    /* position: absolute; */
+    margin: auto;
+    margin-top: 20% !important;
+}
+
+.top-sign .search-div{
+    margin-top: 10% !important;
+    /* background-color: rgba(158, 73, 73, 0.5); */
+}
+.top-sign .search-div form{
+    width: 40%;
+    padding: 20px;
+    background-color: rgba(158, 73, 73, 0.6);
+    border-radius: 10px;
+}
+.top-sign .search-div form input{
+    margin: 5px;
+
+    /* width: 50%; */
+}
+
+.my-button{
+    background-color: #9e4949 !important;
+    color: white !important;
+}
+.index-intro{
+    /* padding: 300px; */
+    background-color: #9e4949;
+    padding : 50px;
+    height: 100%;
+}
+
+.index-intro .contact{
+    padding: 20px;
+}
+
+.mid{
+    background-image: url(../images/image2.jpg);
+    min-height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+}
+
+.mid .mid-card{
+    background-color: rgba(158, 73, 73, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 5px;
+    color: white;
+}
+
+.stars{
+    color: #dfdc27;
+}
+
+.final{
+    background-image: url(../images/image6.jpg);
+    /* min-height: 100vh; */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+}
+
+.dash{
+    background-color: #9e4949;
+}
+
+footer{
+    background-color: #9e4949;
+}
