@@ -9,7 +9,7 @@ Group Members
 + Flask latest version
 
 ## Installation
-getbootstrap.com - download bootstrap 5.2.1
+getbootstrap.com - download bootstrap 5.2.3
 
 ## file arrangements
 + index.html

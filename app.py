@@ -5,9 +5,19 @@ from jinja2 import TemplateNotFound
 from models.BuildingForm import LoginForm, RegisterForm, ContactForm
 from models.base_model import Base, engine
 from models.model_function import contact_submission
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+
 
 app = Flask(__name__)
 app.secret_key = '26682bea5f914ef84a779f0a7a678432'
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)
 
 now = datetime.now()
 
@@ -25,7 +35,7 @@ def create_db():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('home.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])

@@ -4,32 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Rental Hub</title>
-
-    <!-- start of google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;600&display=swap" rel="stylesheet">
-    <!-- end of fonts google link     -->
+    <title>Home Page</title>
 
     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/fonts/bootstrap-icons.css">
     <link rel="stylesheet" href="../static/css/style.css">
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
 </head>
 <body>
+    {% block nav %}
+    {% endblock nav %}
+    
 
-    {% block header %}
-        {% include 'header.html' %}
-    {% endblock header %}
-
-    {% block content %}
-    {% endblock content %}
+    {% block main %}
+    
+    {% endblock main %}
 
     {% block footer %}
-        {% include 'footer.html' %}
+        {% include "footer.html" %}    
     {% endblock footer %}
 
     <script src="../static/js/bootstrap.min.js"></script>
-    <script src="../static/js/script.js"></script>
+    <script src="../static/js/jquery.js"></script>
+    <script type="text/javascript" src="../static/slick/slick.min.js"></script>
+    <script src="../static/js/script.js"></script>      
 </body>
 </html>
