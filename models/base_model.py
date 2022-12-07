@@ -33,34 +33,35 @@ class Admin(Base):
     '''
     Table Admin: for the admin table
     '''
-    __tablename__ = "admin"
+    __tablename__ = "admins"
     admin_id = Column(Integer, nullable=False, primary_key=True)
     username = Column(String(200), nullable=False)
     name = Column(String(100), nullable=False)
     email = Column(String(200), nullable=False)
     password = Column(String(255), nullable=False)
+    role = Column(String(100), nullable=False)
     reg_time = Column(DateTime, default=datetime.now, nullable=False)
 
 
-class Vendor(Base):
+class Rentor(Base):
     '''
     Table User: for the user table
     '''
-    __tablename__ = 'users'
+    __tablename__ = 'rentors'
     user_id = Column(Integer, nullable=False, primary_key=True)
     username = Column(String(200), nullable=False)
-    first_name = Column(String(200), nullable=False)
-    last_name = Column(String(200), nullable=False)
+    full_name = Column(String(200), nullable=False)
+    id_number = Column(String(200), nullable=False, unique=True)
     email = Column(String(200), nullable=False)
     password = Column(String(200), nullable=False)
     reg_time = Column(DateTime, default=datetime.now, nullable=False)
 
 
-class Client(Base):
+class Customers(Base):
     '''
     Table Client: Intance of Base for table clients
     '''
-    __tablename__ = 'clients'
+    __tablename__ = 'customers'
     client_id = Column(Integer, nullable=False, primary_key=True)
     username = Column(String(200), nullable=False)
     first_name = Column(String(200), nullable=False)
@@ -70,15 +71,36 @@ class Client(Base):
     reg_time = Column(DateTime, default=datetime.now, nullable=False)
 
 
-class Building(Base):
+class Property(Base):
     '''
     Table Building: Instance of Base for table building
     '''
-    __tablename__ = "buildings"
+    __tablename__ = "properties"
     building_id = Column(Integer, nullable=False, primary_key=True)
+    images_id = Column(Integer, ForeignKey('images.images_id'), nullable=False)
+    rentor_id = Column(Integer, ForeignKey('rentors.user_id'), nullable=False)
     name = Column(String(200), nullable=False)
-    rooms = Column(Integer, nullable=False)
+    bedrooms = Column(Integer, nullable=False)
+    bathrooms = Column(Integer, nullable=False)
+    location = Column(String(200), nullable=False)
+    size_in_sqft = Column(Integer, nullable=False)
     price = Column(Integer, nullable=False)
+    description = Column(LONGTEXT, nullable=False)
+    available = Column(Boolean, default=True, nullable=False)
     expiry_time = Column(DateTime, default=datetime.now, nullable=True)
     reg_time = Column(DateTime, default=datetime.now, nullable=False)
+
+
+class Image(Base):
+    '''
+    Table Image: Instance of Base for table image
+    '''
+    __tablename__ = "images"
+    images_id = Column(Integer, nullable=False, primary_key=True)
+    property_id = Column(Integer, ForeignKey('properties.building_id'), nullable=False)
+    image_url = Column(String(200), nullable=False)
+    image_name = Column(String(200), nullable=False)
+    reg_time = Column(DateTime, default=datetime.now, nullable=False)
+
+
 

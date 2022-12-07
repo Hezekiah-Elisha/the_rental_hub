@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import sqlalchemy
-from models.base_model import Building, Admin, Vendor, Client, Contact, engine
+from models.base_model import engine, Contact, Admin, Rentor, Customers, Property, Image
 from sqlalchemy.orm import sessionmaker
 
 Session = sessionmaker(bind=engine)
