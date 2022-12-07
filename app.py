@@ -2,7 +2,7 @@
 from datetime import datetime
 from flask import Flask, flash, Blueprint, g, render_template, request, abort, session, url_for, redirect
 from jinja2 import TemplateNotFound
-from models.BuildingForm import LoginForm, RegisterForm, ContactForm
+from models.BuildingForm import LoginForm, SignupForm, ContactForm
 from models.base_model import Base, engine
 from models.model_function import contact_submission
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
@@ -48,10 +48,10 @@ def login():
     return render_template('login.html', form=form)
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/signup', methods=['GET', 'POST'])
 def register():
 
-    form = RegisterForm()
+    form = SignupForm()
 
     if form.validate_on_submit():
         username = form.username.data
@@ -61,9 +61,9 @@ def register():
         password = form.password.data
 
 
-    return render_template('register.html', form=form)
+    return render_template('signup.html', form=form)
 
-@app.route('/contact', methods=['GET', 'POST'])
+@app.route('/feedback', methods=['GET', 'POST'])
 def contact():
     form = ContactForm()
 
@@ -74,9 +74,9 @@ def contact():
 
         contact = contact_submission(title, email, feedback)
 
-        return render_template('contact.html', contact=contact, form=form)
+        return render_template('feedback.html', contact=contact, form=form)
 
-    return render_template('contact.html', form=form)
+    return render_template('feedback.html', form=form)
 
 @app.route('/add_house', methods=['GET', 'POST'])
 def add_house():

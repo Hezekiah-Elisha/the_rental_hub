@@ -1,7 +1,9 @@
 {% extends 'structure.html' %}
 {% block nav %}
     {% include 'top-head.html' %}
-    {% include 'home_banner.html' %}
+    <div class="top-home">
+        {% include 'nav.html' %}
+    </div>
 {% endblock nav %}
 
 
@@ -13,7 +15,7 @@
 
     <div class="row auth">
         <div class="col-md-6 d-flex">
-            <img src="./css/fonts/undraw_authentication_re_svpt(1).svg" alt="" class="img-fluid">
+            <img src="../static/css/fonts/undraw_authentication_re_svpt(1).svg" alt="" class="img-fluid">
         </div>
         <div class="col-md-6">
             <form>
