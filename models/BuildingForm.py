@@ -26,3 +26,73 @@ class ContactForm(FlaskForm):
     email = StringField('email', validators=[DataRequired(), Email()])
     feedback = TextAreaField('feedback', validators=[DataRequired()])
     submit = SubmitField('submit')
+
+class AddHouseForm(FlaskForm):
+    title = StringField('title', validators=[DataRequired()])
+    description = TextAreaField('description', validators=[DataRequired()])
+    price = StringField('price', validators=[DataRequired()])
+    location = StringField('location', validators=[DataRequired()])
+    image = FileField('image', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg'], 'Images only!')])
+    submit = SubmitField('submit')
+
+
+class AddPropertyForm(FlaskForm):
+    title = StringField('title', validators=[DataRequired()])
+    description = TextAreaField('description', validators=[DataRequired()])
+    price = StringField('price', validators=[DataRequired()])
+    location = StringField('location', validators=[DataRequired()])
+    image = FileField('image', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg'], 'Images only!')])
+    submit = SubmitField('submit')
+
+
+class AddImageForm(FlaskForm):
+    image = FileField('image', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg'], 'Images only!')])
+    submit = SubmitField('submit')
+
+class AddRentorForm(FlaskForm):
+    title = StringField('title', validators=[DataRequired()])
+    description = TextAreaField('description', validators=[DataRequired()])
+    price = StringField('price', validators=[DataRequired()])
+    location = StringField('location', validators=[DataRequired()])
+    image = FileField('image', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg'], 'Images only!')])
+    submit = SubmitField('submit')
+
+class AddCustomerForm(FlaskForm):
+    title = StringField('title', validators=[DataRequired()])
+    description = TextAreaField('description', validators=[DataRequired()])
+    price = StringField('price', validators=[DataRequired()])
+    location = StringField('location', validators=[DataRequired()])
+    image = FileField('image', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg'], 'Images only!')])
+    submit = SubmitField('submit')
+
+class AddAgentForm(FlaskForm):
+    title = StringField('title', validators=[DataRequired()])
+    description = TextAreaField('description', validators=[DataRequired()])
+    price = StringField('price', validators=[DataRequired()])
+    location = StringField('location', validators=[DataRequired()])
+    image = FileField('image', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg'], 'Images only!')])
+    submit = SubmitField('submit')
+
+class AddAdminForm(FlaskForm):
+    title = StringField('title', validators=[DataRequired()])
+    description = TextAreaField('description', validators=[DataRequired()])
+    price = StringField('price', validators=[DataRequired()])
+    location = StringField('location', validators=[DataRequired()])
+    image = FileField('image', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg'], 'Images only!')])
+    submit = SubmitField('submit')
+
+class AddContactForm(FlaskForm):
+    title = StringField('title', validators=[DataRequired()])
+    description = TextAreaField('description', validators=[DataRequired()])
+    price = StringField('price', validators=[DataRequired()])
+    location = StringField('location', validators=[DataRequired()])
+    image = FileField('image', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg'], 'Images only!')])
+    submit = SubmitField('submit')
+
+class AddFeedbackForm(FlaskForm):
+    title = StringField('title', validators=[DataRequired()])
+    description = TextAreaField('description', validators=[DataRequired()])
+    price = StringField('price', validators=[DataRequired()])
+    location = StringField('location', validators=[DataRequired()])
+    image = FileField('image', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg'], 'Images only!')])
+    submit = SubmitField('submit')
