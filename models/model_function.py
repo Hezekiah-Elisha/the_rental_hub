@@ -102,3 +102,43 @@ def get_user_name(email):
     except BaseException:
         # session.rollback()
         raise
+
+
+def get_all_users():
+    try:
+        users = session.query(User).all()
+        if users is not None:
+            return users
+        else:
+            return None
+    except BaseException:
+        # session.rollback()
+        raise
+
+
+def roles_edit(user_id, role):
+    try:
+        user = session.query(User).filter(User.user_id == user_id).first()
+        if user is not None:
+            user.role = role
+            session.commit()
+            return 'Role updated'
+        else:
+            return None
+    except BaseException:
+        session.rollback()
+        raise
+
+
+def delete_a_user(user_id):
+    try:
+        user = session.query(User).filter(User.user_id == user_id).first()
+        if user is not None:
+            session.delete(user)
+            session.commit()
+            return 'User deleted'
+        else:
+            return None
+    except BaseException:
+        session.rollback()
+        raise

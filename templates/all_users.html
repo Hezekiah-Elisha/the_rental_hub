@@ -1,0 +1,37 @@
+{% extends 'structure.html' %}
+
+{% block nav %}
+    <div class="top-home">
+        {% include 'nav_admin.html' %}
+    </div>
+{% endblock nav %}
+
+{% block main %}
+<main class="container-fluid">
+    <table class="table table-responsive table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Role</th>
+                <th scope="col">Actions</th>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.full_name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone_number }}</td>
+                <td>{{ user.role }}</td>
+                <td>
+                    <a href="/user/{{ user.user_id }}" class="btn btn-primary text-light">View User</a>
+  
+                    <a href="/delete_user/{{ user.user_id }}" class="btn btn-danger text-light">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </main>
+{% endblock main %}

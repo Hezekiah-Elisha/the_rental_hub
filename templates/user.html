@@ -1,0 +1,42 @@
+{% extends 'structure.html' %}
+
+{% block nav %}
+    <div class="top-home">
+        {% include 'nav_admin.html' %}
+    </div>
+{% endblock nav %}
+
+{% block main %}
+<h2 class="text-center">View Member info</h2>
+<main class="container">
+    <h3>{{ user.full_name }}</h3>
+    <div class="row">
+        <div class="col-md-8">
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Phone:</strong> {{ user.phone_number }}</p>
+            <p><strong>Role:</strong> {{ user.role }}</p>
+        </div>
+        <div class="col-md-4">
+            <div>
+                {% include 'mymessage.html' %}
+            </div>
+            <form action="/user/{{ user.user_id }}" method="POST">
+                {{ form.csrf_token }}
+                <div class="form-floating">
+                    <!-- <input type="email" class="form-control" id="floatingSubject" placeholder="Subject"> -->
+                    {{ form.user_id(class="form-control", id="floatingSubject", placeholder="Subject", value=user.user_id) }}
+                    <label for="floatingSubject">User ID</label>
+                </div>
+                <div class="form-floating">
+                    <!-- <input type="email" class="form-control" id="floatingSubject" placeholder="Subject"> -->
+                    {{ form.role(class="form-control", id="floatingRole", placeholder="Subject", value=user.role) }}
+                    <label for="floatingRole">Role</label>
+                </div>
+                <div class="d-flex justify-content-center">
+                    {{ form.submit(class="btn mybtns", value="Update Role") }}
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock main %}

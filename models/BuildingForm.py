@@ -28,6 +28,12 @@ class ContactForm(FlaskForm):
     feedback = TextAreaField('feedback', validators=[DataRequired()])
     submit = SubmitField('submit')
 
+
+class RoleForm(FlaskForm):
+    user_id = IntegerField('user_id', validators=[DataRequired()])
+    role = SelectField('Role', choices=[('admin', 'Admin'),('customer', 'Customer'), ('rentor', 'Rentor'), ('agent', 'Agent')])
+    submit = SubmitField('submit')
+
 class AddHouseForm(FlaskForm):
     title = StringField('title', validators=[DataRequired()])
     description = TextAreaField('description', validators=[DataRequired()])
