@@ -2,7 +2,7 @@
 from datetime import datetime
 from flask import Flask, flash, Blueprint, g, render_template, request, abort, session, url_for, redirect
 from jinja2 import TemplateNotFound
-from models.BuildingForm import LoginForm, SignupForm, ContactForm, RoleForm
+from models.BuildingForm import LoginForm, SignupForm, ContactForm, AddPropertyForm
 from models.base_model import Base, engine
 from models.model_function import contact_submission, signing_up, signing_in, get_user_id, get_user_role, get_user_name, get_all_users, \
     roles_edit, delete_a_user
@@ -131,6 +131,30 @@ def dashboard():
 def delete_user(id):
     user = delete_a_user(id)
     return redirect('/all_users')
+
+
+@app.route('/post_a_property', methods=['GET', 'POST'])
+def add_property():
+    form = AddPropertyForm()
+
+    if form.validate_on_submit():
+        title = form.title.data
+        description = form.description.data
+        price = form.price.data
+        location = form.location.data
+        category = form.category.data
+        # image = form.image.data
+        bedrooms = form.bedrooms.data
+        bathrooms = form.bathrooms.data
+        # parking = form.parking.data
+        size_in_sqft = form.size_in_sqft.data
+
+        
+
+        property = add_property(title, description, price, location, category, image)
+
+        return render_template('post_property.html', property=property, form=form)
+    return render_template('post_property.html')
 
 
 if __name__ == '__main__':
