@@ -71,9 +71,12 @@ def register():
         email = form.email.data
         password = form.password.data
 
-
-        user = signing_up(username.strip().lower(), fullName.title(), phone, email.strip().lower(),
-                          generate_password_hash(password))
+        user = signing_up(
+            username.strip().lower(),
+            fullName.title(),
+            phone,
+            email.strip().lower(),
+            generate_password_hash(password))
         flash(user, 'success')
         # flash(f"Account created for {form.username.data} of email {form.email.data}!", 'success')
         # return render_template('signup.html', user=user, form=form)

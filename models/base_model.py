@@ -65,7 +65,10 @@ class Customers(Base):
     user_id = Column(Integer, ForeignKey('users.user_id'), nullable=False)
     id_number = Column(String(200), nullable=False, unique=True)
     location = Column(String(200), nullable=False)
-    property_id = Column(Integer, ForeignKey('properties.building_id'), nullable=False)
+    property_id = Column(
+        Integer,
+        ForeignKey('properties.building_id'),
+        nullable=False)
     password = Column(String(200), nullable=False)
     reg_time = Column(DateTime, default=datetime.now, nullable=False)
 
@@ -96,10 +99,10 @@ class Image(Base):
     '''
     __tablename__ = "images"
     images_id = Column(Integer, nullable=False, primary_key=True)
-    property_id = Column(Integer, ForeignKey('properties.building_id'), nullable=False)
+    property_id = Column(
+        Integer,
+        ForeignKey('properties.building_id'),
+        nullable=False)
     image_url = Column(String(200), nullable=False)
     image_name = Column(String(200), nullable=False)
     reg_time = Column(DateTime, default=datetime.now, nullable=False)
-
-
-
