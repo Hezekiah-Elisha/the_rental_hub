@@ -70,7 +70,7 @@ class AddPropertyForm(FlaskForm):
         choices=[
             ('available', 'Available'),
             ('unavailable', 'Unavailable')])
-    
+
     # image = FileField('image', validators=[FileRequired(), FileAllowed(
     #     ['jpg', 'png', 'Images only!'])])
     submit = SubmitField('submit')

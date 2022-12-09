@@ -149,9 +149,9 @@ def add_property():
         # parking = form.parking.data
         size_in_sqft = form.size_in_sqft.data
 
-        
 
-        property = add_property(title, description, price, location, category, image)
+
+        # property = add_property(title, description, price, location, category, image)
 
         return render_template('post_property.html', property=property, form=form)
     return render_template('post_property.html')
