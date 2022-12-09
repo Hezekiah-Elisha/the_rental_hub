@@ -4,7 +4,8 @@ from flask import Flask, flash, Blueprint, g, render_template, request, abort, s
 from jinja2 import TemplateNotFound
 from models.BuildingForm import LoginForm, SignupForm, ContactForm
 from models.base_model import Base, engine
-from models.model_function import contact_submission
+from models.model_function import contact_submission, signing_up, signing_in, get_user_id, get_user_role, get_user_name
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 app = Flask(__name__)
@@ -34,8 +35,23 @@ def login():
     form = LoginForm()
 
     if form.validate_on_submit():
-        username = form.username.data
+        email = form.email.data
         password = form.password.data
+
+        user = signing_in(email)
+        if user is not None:
+            if check_password_hash(user, password):
+                session['email'] = email
+                session['password'] = password
+                session['logged_in'] = True
+                session['full_name'] = get_user_name(email)
+                return redirect('/dashboard')
+
+            else:
+                flash('Incorrect password', 'danger')
+        else:
+            flash('Email not found', 'danger')
+
     return render_template('login.html', form=form)
 
 
@@ -46,13 +62,19 @@ def register():
 
     if form.validate_on_submit():
         username = form.username.data
-        firstName = form.fistName.data
-        lastName = form.lastName.data
+        fullName = form.fullname.data
+        phone = form.phone.data
         email = form.email.data
         password = form.password.data
 
+        user = signing_up(username, fullName, phone, email,
+                          generate_password_hash(password))
+        flash(user, 'success')
+        # flash(f"Account created for {form.username.data} of email {form.email.data}!", 'success')
+        # return render_template('signup.html', user=user, form=form)
 
     return render_template('signup.html', form=form)
+
 
 @app.route('/feedback', methods=['GET', 'POST'])
 def contact():
@@ -69,6 +91,13 @@ def contact():
 
     return render_template('feedback.html', form=form)
 
+
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
+
+
 @app.route('/add_house', methods=['GET', 'POST'])
 def add_house():
     return render_template('add_house.html')
@@ -81,7 +110,7 @@ def get_session():
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
-    return render_template('admin/dashboard.html')
+    return render_template('dashboard.html')
 
 
 if __name__ == '__main__':

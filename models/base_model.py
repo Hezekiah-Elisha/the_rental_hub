@@ -29,17 +29,18 @@ class Contact(Base):
     feedback_time = Column(DateTime, default=datetime.now, nullable=False)
 
 
-class Admin(Base):
+class User(Base):
     '''
-    Table Admin: for the admin table
+    Table User: for users of the system
     '''
-    __tablename__ = "admins"
-    admin_id = Column(Integer, nullable=False, primary_key=True)
+    __tablename__ = "users"
+    user_id = Column(Integer, nullable=False, primary_key=True)
     username = Column(String(200), nullable=False)
-    name = Column(String(100), nullable=False)
+    full_name = Column(String(100), nullable=False)
+    phone_number = Column(String(100), nullable=False)
     email = Column(String(200), nullable=False)
     password = Column(String(255), nullable=False)
-    role = Column(String(100), nullable=False)
+    role = Column(String(100), nullable=False, default='customer')
     reg_time = Column(DateTime, default=datetime.now, nullable=False)
 
 
@@ -48,12 +49,10 @@ class Rentor(Base):
     Table User: for the user table
     '''
     __tablename__ = 'rentors'
-    user_id = Column(Integer, nullable=False, primary_key=True)
-    username = Column(String(200), nullable=False)
-    full_name = Column(String(200), nullable=False)
+    rentor_id = Column(Integer, nullable=False, primary_key=True)
+    user_id = Column(Integer, ForeignKey('users.user_id'), nullable=False)
     id_number = Column(String(200), nullable=False, unique=True)
-    email = Column(String(200), nullable=False)
-    password = Column(String(200), nullable=False)
+    location = Column(String(200), nullable=False)
     reg_time = Column(DateTime, default=datetime.now, nullable=False)
 
 
@@ -62,11 +61,11 @@ class Customers(Base):
     Table Client: Intance of Base for table clients
     '''
     __tablename__ = 'customers'
-    client_id = Column(Integer, nullable=False, primary_key=True)
-    username = Column(String(200), nullable=False)
-    first_name = Column(String(200), nullable=False)
-    last_name = Column(String(200), nullable=False)
-    email = Column(String(200), nullable=False)
+    customer_id = Column(Integer, nullable=False, primary_key=True)
+    user_id = Column(Integer, ForeignKey('users.user_id'), nullable=False)
+    id_number = Column(String(200), nullable=False, unique=True)
+    location = Column(String(200), nullable=False)
+    property_id = Column(Integer, ForeignKey('properties.building_id'), nullable=False)
     password = Column(String(200), nullable=False)
     reg_time = Column(DateTime, default=datetime.now, nullable=False)
 

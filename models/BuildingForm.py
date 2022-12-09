@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField, PasswordField, \
-    SelectField, FileField, DateTimeField
+    SelectField, FileField, DateTimeField, IntegerField
 from wtforms.validators import DataRequired, Email
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 
 
 class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
+    email = StringField('email', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
 
@@ -15,8 +15,9 @@ class LoginForm(FlaskForm):
 class SignupForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     fullname = StringField('First Name', validators=[DataRequired()])
-    lastName = StringField('Last Name', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
+    phone = IntegerField('Phone', validators=[DataRequired()])
+    # role = SelectField('Role', choices=[('admin', 'Admin'), ('user', 'User')])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Register')
 
