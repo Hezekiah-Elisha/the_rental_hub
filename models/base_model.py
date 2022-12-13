@@ -67,7 +67,7 @@ class Customers(Base):
     location = Column(String(200), nullable=False)
     property_id = Column(
         Integer,
-        ForeignKey('properties.building_id'),
+        ForeignKey('properties.property_id'),
         nullable=False)
     password = Column(String(200), nullable=False)
     reg_time = Column(DateTime, default=datetime.now, nullable=False)
@@ -87,7 +87,7 @@ class Property(Base):
     size_in_sqft = Column(Integer, nullable=False)
     price = Column(Integer, nullable=False)
     description = Column(LONGTEXT, nullable=False)
-    available = Column(Boolean, default=True, nullable=False)
+    available = Column(String(100), default='available', nullable=False)
     expiry_time = Column(DateTime, default=datetime.now, nullable=True)
     reg_time = Column(DateTime, default=datetime.now, nullable=False)
 
@@ -100,7 +100,7 @@ class Image(Base):
     images_id = Column(Integer, nullable=False, primary_key=True)
     property_id = Column(
         Integer,
-        ForeignKey('properties.building_id'),
+        ForeignKey('properties.property_id'),
         nullable=False)
     image_name = Column(String(200), nullable=False)
     reg_time = Column(DateTime, default=datetime.now, nullable=False)

@@ -70,8 +70,15 @@ class AddPropertyForm(FlaskForm):
             ('available', 'Available'),
             ('unavailable', 'Unavailable')])
 
-    image = FileField('image', validators=[FileRequired(), FileAllowed(
-        ['jpg', 'png', 'Images only!'])])
+    # image = FileField('image', validators=[FileRequired(), FileAllowed(
+        # ['jpg', 'png', 'Images only!'])])
     # images = MultipleFileField('images', validators=[FileRequired(), FileAllowed(
         # ['jpg', 'png', 'Images only!'])])
+    expiry_date = DateTimeField('expiry_date', validators=[DataRequired()])
+    submit = SubmitField('submit')
+
+
+class RentorCompleteForm(FlaskForm):
+    id_number = IntegerField('id_number', validators=[DataRequired()])
+    location = StringField('location', validators=[DataRequired()])
     submit = SubmitField('submit')

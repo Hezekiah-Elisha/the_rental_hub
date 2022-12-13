@@ -154,13 +154,45 @@ def delete_a_user(user_id):
         raise
 
 
-def uploadProperty(name, bedrooms, bathrooms, location, size_in_sqft, price, description, available, experiry_time, image):
+def addProperty(rentor_id, name, bedrooms, bathrooms, location, size_in_sqft, price, description, available, expiry_time):
     try:
-        property = Property(name=name, bedrooms=bedrooms, bathrooms=bathrooms, location=location, size_in_sqft=size_in_sqft, price=price, description=description, available=available, experiry_time=experiry_time)
-        image = Image(image=image)
+        property = Property(rentor_id, name=name, bedrooms=bedrooms, bathrooms=bathrooms, location=location, size_in_sqft=size_in_sqft, price=price, description=description, available=available, expiry_time=expiry_time)
         session.add(property)
         session.commit()
         return 'Property added'
     except BaseException:
         session.rollback()
+        raise
+
+def get_rentor_info(user_id):
+    try:
+        rentor = session.query(Rentor).filter(Rentor.user_id == user_id).first()
+        if rentor is not None:
+            return rentor
+        else:
+            return None
+    except BaseException:
+        # session.rollback()
+        raise
+
+def add_rentor_info(user_id, id_number, loation):
+    try:
+        rentor = Rentor(user_id=user_id, id_number=id_number, location=loation)
+        session.add(rentor)
+        session.commit()
+        return 'Rentor info added'
+    except BaseException:
+        session.rollback()
+        raise
+
+
+def check_role(email):
+    try:
+        user = session.query(User).filter(User.email == email).first()
+        if user is not None:
+            return user.role
+        else:
+            return None
+    except BaseException:
+        # session.rollback()
         raise

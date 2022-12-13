@@ -5,8 +5,9 @@ from flask_uploads import configure_uploads, IMAGES, UploadSet
 from jinja2 import TemplateNotFound
 from models.BuildingForm import LoginForm, SignupForm, ContactForm, AddPropertyForm
 from models.base_model import Base, engine
-from models.model_function import contact_submission, signing_up, signing_in, get_user_id, get_user_role, get_user_name, get_all_users, \
-    roles_edit, delete_a_user
+from models.model_function import contact_submission, signing_up, signing_in, \
+    get_user_id, get_user_role, get_user_name, get_all_users, roles_edit, delete_a_user ,\
+        addProperty
 from routes.user import user
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
@@ -165,15 +166,8 @@ def add_property():
         bathrooms = form.bathrooms.data
         # parking = form.parking.data
         size_in_sqft = form.size_in_sqft.data
-        file = form.image.data
 
-        myfilename = upload_myfile(file)
-
-        print(f'=========myfilename========={myfilename}')
-
-
-
-        # property = add_property(title, description, price, location, category, image)
+        # property = addProperty(session['user_id'],title, description, price, location, category, bedrooms, bathrooms, size_in_sqft)
 
         return render_template('post_property.html', property=property, form=form)
     return render_template('post_property.html', form=form)

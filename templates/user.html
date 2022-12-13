@@ -38,5 +38,37 @@
             </form>
         </div>
     </div>
+    <div class="row">
+        {% if info(user.user_id) == none %}
+        <div class="d-flex justify-content-center">
+            <form action="/user/{{ user.user_id }}" class="" method="POST">
+                <div>
+                    {% include 'mymessage.html' %}
+                  </div>
+                <h2 class="text-center">Please complete your profile</h2>
+
+                {{ form.csrf_token }}
+                <div class="form-floating">
+                    <!-- <input type="email" class="form-control" id="floatingSubject" placeholder="Subject"> -->
+                    {{ form2.id_number(class="form-control", id="floatingSubject", placeholder="Subject") }}
+                    <label for="floatingSubject">Id Number</label>
+                </div>
+                <div class="form-floating">
+                    <!-- <input type="email" class="form-control" id="floatingSubject" placeholder="Subject"> -->
+                    {{ form2.location(class="form-control", id="floatingSubject", placeholder="Subject") }}
+                    <label for="floatingSubject">What is your location</label>
+                </div>
+                <div class="form-floating d-flex justify-content-center">
+                    <!-- <input type="email" class="form-control" id="floatingSubject" placeholder="Subject"> -->
+                    {{ form2.submit(class="btn mybtns", value="Update Role") }}
+                    <!-- <label for="floatingSubject">What is your occupation</label> -->
+                </div>
+            </form>
+        </div>
+
+        {% else %}
+            <p>Info</p>
+        {% endif %}
+    </div>
 </main>
 {% endblock main %}

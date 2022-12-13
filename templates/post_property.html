@@ -50,17 +50,21 @@
                 {{ form.size_in_sqft(class="form-control", id="floatingInput", placeholder="") }}
                 <label for="floatingInput">Size in Square Feet</label>
             </div>
+            <div class="form-floating">
+                {{ form.expiry_date(class="form-control", id="floatingInput", placeholder="") }}
+                <label for="floatingInput">Expiry Date</label>
+            </div>
             
 
 
     </div>
     <div class="col-md-6">
-        <h2>Post Property Images</h2>
-        <div class="form-floating">
-            {{ form.image(class="form-control", id="floatingInput", placeholder="") }}
-            <label for="floatingInput">Images</label>
-        </div>
-        {{ form.submit(class="btn mybtns", value="Post a house")}}
+        <!-- <h2>Post Property Images</h2> -->
+        <!-- <div class="form-floating"> -->
+            {# form.image(class="form-control", id="floatingInput", placeholder="") #}
+            <!-- <label for="floatingInput">Images</label> -->
+        <!-- </div> -->
+        {{ form.submit(class="btn mybtns", value="Post the Property")}}
     </form>
     </div>
 </main>
