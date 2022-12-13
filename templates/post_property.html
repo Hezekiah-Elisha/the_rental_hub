@@ -7,10 +7,61 @@
 {% endblock nav %}
 
 {% block main %}
-<main class="d-flex justify-content-center">
-    <form action="">
-        lll
-    </form>
+<main class="container-fluid row">
+    <h2 class="text-center">Post a Property</h2>
 
+    <div class="col-md-6 d-flex justify-content-center">
+        <form action="/post_a_property" method="POST" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+    
+            <div class="form-floating">
+                {{ form.title(class="form-control", id="floatingInput", placeholder="") }}
+                <label for="floatingInput">Title</label>
+            </div>
+            <div class="form-floating">
+                {{ form.description(class="form-control", id="floatingInput", placeholder="") }}
+                <label for="floatingInput">Description</label>
+            </div>
+            <div class="form-floating">
+                {{ form.price(class="form-control", id="floatingInput", placeholder="") }}
+                <label for="floatingInput">Price</label>
+            </div>
+            <div class="form-floating">
+                {{ form.location(class="form-control", id="floatingInput", placeholder="") }}
+                <label for="floatingInput">Location</label>
+            </div>
+            <div class="form-floating">
+                {{ form.category(class="form-control", id="floatingInput", placeholder="") }}
+                <label for="floatingInput">category</label>
+            </div>
+            <div class="form-floating">
+                {{ form.availability(class="form-control", id="floatingAva", placeholder="") }}
+                <label for="floatingAva">Availability</label>
+            </div>
+            <div class="form-floating">
+                {{ form.bedrooms(class="form-control", id="floatingInput", placeholder="") }}
+                <label for="floatingInput">No of bedrooms</label>
+            </div>
+            <div class="form-floating">
+                {{ form.bathrooms(class="form-control", id="floatingInput", placeholder="") }}
+                <label for="floatingInput">No of Bathrooms</label>
+            </div>
+            <div class="form-floating">
+                {{ form.size_in_sqft(class="form-control", id="floatingInput", placeholder="") }}
+                <label for="floatingInput">Size in Square Feet</label>
+            </div>
+            
+
+
+    </div>
+    <div class="col-md-6">
+        <h2>Post Property Images</h2>
+        <div class="form-floating">
+            {{ form.image(class="form-control", id="floatingInput", placeholder="") }}
+            <label for="floatingInput">Images</label>
+        </div>
+        {{ form.submit(class="btn mybtns", value="Post a house")}}
+    </form>
+    </div>
 </main>
 {% endblock main %}

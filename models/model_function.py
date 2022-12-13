@@ -152,3 +152,15 @@ def delete_a_user(user_id):
     except BaseException:
         session.rollback()
         raise
+
+
+def uploadProperty(name, bedrooms, bathrooms, location, size_in_sqft, price, description, available, experiry_time, image):
+    try:
+        property = Property(name=name, bedrooms=bedrooms, bathrooms=bathrooms, location=location, size_in_sqft=size_in_sqft, price=price, description=description, available=available, experiry_time=experiry_time)
+        image = Image(image=image)
+        session.add(property)
+        session.commit()
+        return 'Property added'
+    except BaseException:
+        session.rollback()
+        raise

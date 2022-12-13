@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 from datetime import datetime
 from flask import Flask, flash, Blueprint, g, render_template, request, abort, session, url_for, redirect
+from flask_uploads import configure_uploads, IMAGES, UploadSet
 from jinja2 import TemplateNotFound
 from models.BuildingForm import LoginForm, SignupForm, ContactForm, AddPropertyForm
 from models.base_model import Base, engine
@@ -8,10 +9,25 @@ from models.model_function import contact_submission, signing_up, signing_in, ge
     roles_edit, delete_a_user
 from routes.user import user
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
+# from werkzeug.datastructures import FileStorage
 
 
 app = Flask(__name__)
 app.secret_key = '26682bea5f914ef84a779f0a7a678432'
+
+app.config['UPLOADED_PHOTOS_DEST'] = 'static/images/uploads'
+app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024
+# photos = UploadSet('photos', IMAGES)
+# configure_uploads(app, photos)
+
+def upload_myfile(file):
+    if file:
+        file.save(secure_filename(file.filename))
+        # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        return 'file uploaded successfully'
+    else:
+        return 'no file selected'
 
 app.register_blueprint(user)
 
@@ -49,6 +65,7 @@ def login():
                 session['password'] = password
                 session['logged_in'] = True
                 session['full_name'] = get_user_name(email)
+                session['user_id'] = get_user_id(email)
                 return redirect('/dashboard')
 
             else:
@@ -148,13 +165,18 @@ def add_property():
         bathrooms = form.bathrooms.data
         # parking = form.parking.data
         size_in_sqft = form.size_in_sqft.data
+        file = form.image.data
+
+        myfilename = upload_myfile(file)
+
+        print(f'=========myfilename========={myfilename}')
 
 
 
         # property = add_property(title, description, price, location, category, image)
 
         return render_template('post_property.html', property=property, form=form)
-    return render_template('post_property.html')
+    return render_template('post_property.html', form=form)
 
 
 if __name__ == '__main__':

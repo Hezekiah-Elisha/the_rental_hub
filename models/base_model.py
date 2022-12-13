@@ -78,8 +78,7 @@ class Property(Base):
     Table Building: Instance of Base for table building
     '''
     __tablename__ = "properties"
-    building_id = Column(Integer, nullable=False, primary_key=True)
-    images_id = Column(Integer, ForeignKey('images.images_id'), nullable=False)
+    property_id = Column(Integer, nullable=False, primary_key=True)
     rentor_id = Column(Integer, ForeignKey('rentors.user_id'), nullable=False)
     name = Column(String(200), nullable=False)
     bedrooms = Column(Integer, nullable=False)
@@ -103,6 +102,5 @@ class Image(Base):
         Integer,
         ForeignKey('properties.building_id'),
         nullable=False)
-    image_url = Column(String(200), nullable=False)
     image_name = Column(String(200), nullable=False)
     reg_time = Column(DateTime, default=datetime.now, nullable=False)

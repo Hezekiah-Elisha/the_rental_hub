@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField, PasswordField, \
-    SelectField, FileField, DateTimeField, IntegerField
+    SelectField, FileField, DateTimeField, IntegerField, MultipleFileField
 from wtforms.validators import DataRequired, Email
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 
@@ -64,13 +64,14 @@ class AddPropertyForm(FlaskForm):
              'Land'),
             ('office',
              'Office')])
-    description = TextAreaField('description', validators=[DataRequired()])
     availability = SelectField(
         'availability',
         choices=[
             ('available', 'Available'),
             ('unavailable', 'Unavailable')])
 
-    # image = FileField('image', validators=[FileRequired(), FileAllowed(
-    #     ['jpg', 'png', 'Images only!'])])
+    image = FileField('image', validators=[FileRequired(), FileAllowed(
+        ['jpg', 'png', 'Images only!'])])
+    # images = MultipleFileField('images', validators=[FileRequired(), FileAllowed(
+        # ['jpg', 'png', 'Images only!'])])
     submit = SubmitField('submit')
