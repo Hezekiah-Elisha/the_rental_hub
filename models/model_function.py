@@ -53,11 +53,11 @@ def signing_up(username, full_name, phone_number, email, password):
         raise
 
 
-def get_user_id(email):
+def get_user_id(user_id):
     try:
-        user = session.query(User).filter(User.email == email).first()
+        user = session.query(Rentor).filter(User.user_id == user_id).first()
         if user is not None:
-            return user.user_id
+            return Rentor.rentor_id
         else:
             return None
     except BaseException:
@@ -154,9 +154,9 @@ def delete_a_user(user_id):
         raise
 
 
-def addProperty(rentor_id, name, bedrooms, bathrooms, location, category, size_in_sqft, price, description, available, expiry_date):
+def addProperty(rentor_id, name, bedrooms, bathrooms, location, category, size_in_sqft, price, description, available):
     try:
-        property = Property(rentor_id, name=name, bedrooms=bedrooms, bathrooms=bathrooms, location=location, category=category, size_in_sqft=size_in_sqft, price=price, description=description, available=available, expiry_time=expiry_date)
+        property = Property(rentor_id=rentor_id, name=name, bedrooms=bedrooms, bathrooms=bathrooms, location=location, size_in_sqft=size_in_sqft, price=price, category=category, description=description, available=available)
         session.add(property)
         session.commit()
         return 'Property added'
@@ -203,6 +203,17 @@ def get_rentor_id(user_id):
         rentor = session.query(Rentor).filter(Rentor.user_id == user_id).first()
         if rentor is not None:
             return rentor.rentor_id
+        else:
+            return None
+    except BaseException:
+        # session.rollback()
+        raise
+
+def check_property_image(property_id):
+    try:
+        image = session.query(Image).filter(Image.property_id == property_id).first()
+        if image is not None:
+            return image
         else:
             return None
     except BaseException:

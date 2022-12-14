@@ -74,7 +74,7 @@ class AddPropertyForm(FlaskForm):
         # ['jpg', 'png', 'Images only!'])])
     # images = MultipleFileField('images', validators=[FileRequired(), FileAllowed(
         # ['jpg', 'png', 'Images only!'])])
-    expiry_date = DateTimeField('expiry_date', validators=[DataRequired()])
+    # expiry_date = DateTimeField('expiry_date', validators=[DataRequired()])
     submit = SubmitField('submit')
 
 

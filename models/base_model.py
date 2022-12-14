@@ -89,7 +89,7 @@ class Property(Base):
     category = Column(String(200), nullable=False)
     description = Column(LONGTEXT, nullable=False)
     available = Column(String(100), default='available', nullable=False)
-    expiry_time = Column(DateTime, default=datetime.now, nullable=True)
+    # expiry_time = Column(DateTime, default=datetime.now, nullable=True)
     reg_time = Column(DateTime, default=datetime.now, nullable=False)
 
 

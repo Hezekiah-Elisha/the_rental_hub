@@ -156,7 +156,7 @@ def add_property():
     form = AddPropertyForm()
 
     if form.validate_on_submit():
-        rentor_id = get_rentor_id(session['email'])
+        rentor_id = get_rentor_id(session['user_id'])
         title = form.title.data
         description = form.description.data
         price = form.price.data
@@ -168,9 +168,9 @@ def add_property():
         # parking = form.parking.data
         size_in_sqft = form.size_in_sqft.data
         available = form.availability.data
-        expiry_date = form.expiry_date.data
+        # expiry_date = form.expiry_date.data
 
-        property = addProperty(rentor_id, title, bedrooms, bathrooms, location, category, size_in_sqft, description, price, available, expiry_date)
+        property = addProperty(rentor_id, title, bedrooms, bathrooms, location, category, size_in_sqft, price, description, available)
 
         if property:
             flash('Property added successfully', 'success')
