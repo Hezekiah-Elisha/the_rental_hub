@@ -154,9 +154,9 @@ def delete_a_user(user_id):
         raise
 
 
-def addProperty(rentor_id, name, bedrooms, bathrooms, location, size_in_sqft, price, description, available, expiry_time):
+def addProperty(rentor_id, name, bedrooms, bathrooms, location, category, size_in_sqft, price, description, available, expiry_date):
     try:
-        property = Property(rentor_id, name=name, bedrooms=bedrooms, bathrooms=bathrooms, location=location, size_in_sqft=size_in_sqft, price=price, description=description, available=available, expiry_time=expiry_time)
+        property = Property(rentor_id, name=name, bedrooms=bedrooms, bathrooms=bathrooms, location=location, category=category, size_in_sqft=size_in_sqft, price=price, description=description, available=available, expiry_time=expiry_date)
         session.add(property)
         session.commit()
         return 'Property added'
@@ -191,6 +191,18 @@ def check_role(email):
         user = session.query(User).filter(User.email == email).first()
         if user is not None:
             return user.role
+        else:
+            return None
+    except BaseException:
+        # session.rollback()
+        raise
+
+
+def get_rentor_id(user_id):
+    try:
+        rentor = session.query(Rentor).filter(Rentor.user_id == user_id).first()
+        if rentor is not None:
+            return rentor.rentor_id
         else:
             return None
     except BaseException:

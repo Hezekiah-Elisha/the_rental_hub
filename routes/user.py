@@ -35,4 +35,6 @@ def user_profile(user_id):
         else:
             flash('Rentor info updated', 'success')
     # return redirect('/user/{}'.format(user_id))
-    return render_template('user.html', user=user, form=form, info=get_rentor_info, form2=form2)
+
+    info = get_rentor_info(user_id)
+    return render_template('user.html', user=user, form=form, info=info, form2=form2)

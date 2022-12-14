@@ -86,6 +86,7 @@ class Property(Base):
     location = Column(String(200), nullable=False)
     size_in_sqft = Column(Integer, nullable=False)
     price = Column(Integer, nullable=False)
+    category = Column(String(200), nullable=False)
     description = Column(LONGTEXT, nullable=False)
     available = Column(String(100), default='available', nullable=False)
     expiry_time = Column(DateTime, default=datetime.now, nullable=True)
@@ -103,4 +104,24 @@ class Image(Base):
         ForeignKey('properties.property_id'),
         nullable=False)
     image_name = Column(String(200), nullable=False)
+    reg_time = Column(DateTime, default=datetime.now, nullable=False)
+
+
+
+class EcoFriendly(Base):
+    '''
+    Table EcoFriendly: Instance of Base for table ecofriendly
+    '''
+    __tablename__ = "ecofriendly"
+    ecofriendly_id = Column(Integer, nullable=False, primary_key=True)
+    property_id = Column(
+        Integer,
+        ForeignKey('properties.property_id'),
+        nullable=False)
+    ecofriendly = Column(String(200), nullable=False)
+    green_energy = Column(String(200), nullable=True, default='no')
+    solar_panels = Column(String(200), nullable=True, default='no')
+    rain_water_harvesting = Column(String(200), nullable=True, default='No')
+    green_materials = Column(String(200), nullable=True, default='none')
+    description = Column(LONGTEXT, nullable=False)
     reg_time = Column(DateTime, default=datetime.now, nullable=False)

@@ -7,10 +7,10 @@
 {% endblock nav %}
 
 {% block main %}
-<main class="container-fluid row">
-    <h2 class="text-center">Post a Property</h2>
+<main class="container-fluid">
+    <h2 class="text-center">Post a Property information</h2>
 
-    <div class="col-md-6 d-flex justify-content-center">
+    <div class="d-flex justify-content-center">
         <form action="/post_a_property" method="POST" enctype="multipart/form-data">
             {{ form.csrf_token }}
     
@@ -52,20 +52,11 @@
             </div>
             <div class="form-floating">
                 {{ form.expiry_date(class="form-control", id="floatingInput", placeholder="") }}
-                <label for="floatingInput">Expiry Date</label>
+                <label for="floatingInput">Expiry Date(dd/mm/yyyy)</label>
             </div>
-            
 
-
-    </div>
-    <div class="col-md-6">
-        <!-- <h2>Post Property Images</h2> -->
-        <!-- <div class="form-floating"> -->
-            {# form.image(class="form-control", id="floatingInput", placeholder="") #}
-            <!-- <label for="floatingInput">Images</label> -->
-        <!-- </div> -->
-        {{ form.submit(class="btn mybtns", value="Post the Property")}}
-    </form>
+            {{ form.submit(class="btn mybtns", value="Post the Property")}}
+        </form>
     </div>
 </main>
 {% endblock main %}

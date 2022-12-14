@@ -82,3 +82,34 @@ class RentorCompleteForm(FlaskForm):
     id_number = IntegerField('id_number', validators=[DataRequired()])
     location = StringField('location', validators=[DataRequired()])
     submit = SubmitField('submit')
+
+
+class EcoForm(FlaskForm):
+    eco_friendly = SelectField(
+        'eco_friendly',
+        choices=[
+            ('yes','Yes'),
+            ('no','No')])
+    green_energy = SelectField(
+        'green_energy',
+        choices=[
+            ('yes','Yes'),
+            ('no','No')])
+    solar_panels = SelectField(
+        'solar_panels',
+        choices=[
+            ('yes','Yes'),
+            ('no','No')])
+    rain_water_harvesting = SelectField(
+        'rain_water_harvesting',
+        choices=[
+            ('yes','Yes'),
+            ('no','No')])
+    green_materials = SelectField(
+        'green_materials',
+        choices=[
+            ('yes','Yes'),
+            ('no','No')])
+    description = TextAreaField('description', validators=[DataRequired()])
+    submit = SubmitField('submit')
+

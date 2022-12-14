@@ -7,7 +7,7 @@ from models.BuildingForm import LoginForm, SignupForm, ContactForm, AddPropertyF
 from models.base_model import Base, engine
 from models.model_function import contact_submission, signing_up, signing_in, \
     get_user_id, get_user_role, get_user_name, get_all_users, roles_edit, delete_a_user ,\
-        addProperty
+        addProperty, get_rentor_id
 from routes.user import user
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
@@ -156,6 +156,7 @@ def add_property():
     form = AddPropertyForm()
 
     if form.validate_on_submit():
+        rentor_id = get_rentor_id(session['email'])
         title = form.title.data
         description = form.description.data
         price = form.price.data
@@ -166,8 +167,14 @@ def add_property():
         bathrooms = form.bathrooms.data
         # parking = form.parking.data
         size_in_sqft = form.size_in_sqft.data
+        available = form.availability.data
+        expiry_date = form.expiry_date.data
 
-        # property = addProperty(session['user_id'],title, description, price, location, category, bedrooms, bathrooms, size_in_sqft)
+        property = addProperty(rentor_id, title, bedrooms, bathrooms, location, category, size_in_sqft, description, price, available, expiry_date)
+
+        if property:
+            flash('Property added successfully', 'success')
+            return redirect('/dashboard')
 
         return render_template('post_property.html', property=property, form=form)
     return render_template('post_property.html', form=form)

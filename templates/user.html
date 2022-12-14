@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="row">
-        {% if info(user.user_id) == none %}
+        {% if info == none %}
         <div class="d-flex justify-content-center">
             <form action="/user/{{ user.user_id }}" class="" method="POST">
                 <div>
@@ -67,7 +67,12 @@
         </div>
 
         {% else %}
-            <p>Info</p>
+        <h2 class="text-center">More of Your Profile</h2>
+            <p>ID_NUMBER: {{ info.id_number }}</p>
+            <p>LOCATION: {{ info.location }}</p>
+            <a class="nav-link" href="/post_a_property">
+                <button class="btn mybtns">Hi {{ session['full_name'] }}, Post a property</button>
+            </a>
         {% endif %}
     </div>
 </main>
