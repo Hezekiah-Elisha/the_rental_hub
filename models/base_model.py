@@ -7,7 +7,7 @@ from sqlalchemy.dialects.mysql import LONGTEXT
 
 host = 'localhost'
 user = 'root'
-password = 'root'
+password = ''
 database = 'the_rental_hub'
 
 SQLALCHEMY_DATABASE_URL = f"mysql+mysqldb://{user}:{password}@{host}/{database}"

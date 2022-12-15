@@ -53,11 +53,11 @@ def signing_up(username, full_name, phone_number, email, password):
         raise
 
 
-def get_user_id(user_id):
+def get_user_id(email):
     try:
-        user = session.query(Rentor).filter(User.user_id == user_id).first()
+        user = session.query(User).filter(User.email == email).first()
         if user is not None:
-            return Rentor.rentor_id
+            return User.user_id
         else:
             return None
     except BaseException:

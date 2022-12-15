@@ -66,9 +66,9 @@ def login():
                 session['password'] = password
                 session['logged_in'] = True
                 session['full_name'] = get_user_name(email)
-                session['user_id'] = get_user_id(email)
+                # session['user_id'] = get_user_id(email)
+                # print(get_user_id(email))
                 return redirect('/dashboard')
-
             else:
                 flash('Incorrect password', 'danger')
         else:
@@ -170,7 +170,9 @@ def add_property():
         available = form.availability.data
         # expiry_date = form.expiry_date.data
 
-        property = addProperty(rentor_id, title, bedrooms, bathrooms, location, category, size_in_sqft, price, description, available)
+        print(rentor_id)
+
+        # property = addProperty(rentor_id, title, bedrooms, bathrooms, location, category, size_in_sqft, price, description, available)
 
         if property:
             flash('Property added successfully', 'success')
